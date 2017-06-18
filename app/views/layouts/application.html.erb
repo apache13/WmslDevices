@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WmslDevices</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<p><%= link_to 'Devices', devices_path %></p>
+	<p><%= link_to 'Staffs', staffs_path %></p>
+	<p><%= link_to 'Enrolls', enrolls_path %></p>
+    <%= yield %>
+  </body>
+</html>

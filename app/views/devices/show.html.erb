@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @device.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @device.code %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Staff</th>
+      <th>Status</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @device.enrolls.each do |enroll| %>
+      <tr>
+      	<td><%= enroll.staff.name %></td>
+      	<td><%= enroll.status %></td>
+      	<td><%= enroll.start_date %></td>
+      	<td><%= enroll.end_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>
