@@ -69,6 +69,6 @@ class EnrollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enroll_params
-      params.require(:enroll).permit(:staff_id, :device_id, :status, :start_date, :end_date)
+      params.require(:enroll).permit(:staff_id, :device_id, :start_date, :end_date)
     end
 end

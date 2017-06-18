@@ -18,12 +18,7 @@
 
   <div class="field">
     <%= form.label :device_id %>
-    <%= form.collection_select(:device_id,Device.all,:id,:display_avalible,prompt: true) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.check_box :status, id: :enroll_status %>
+    <%= form.collection_select(:device_id,Device.all,:id,:display,prompt: true) %>
   </div>
   
   <div class="field">

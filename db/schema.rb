@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20170616183502) do
     t.integer "device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status"
     t.datetime "start_date"
     t.datetime "end_date"
     t.index ["device_id"], name: "index_enrolls_on_device_id"

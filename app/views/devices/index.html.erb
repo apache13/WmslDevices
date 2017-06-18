@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Id.</th>
       <th>Name</th>
       <th>Code</th>
-      <th>Staff(Enroll/Using)</th>
+      <th>Using</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @devices.each do |device| %>
       <tr>
-      	<td><%= device.id %></td>
         <td><%= device.name %></td>
         <td><%= device.code %></td>
-        <td><%= device.enrolls.size %>/<%= device.active_enrolls.size %></td>
+        <td><%= device.using? %></td>
         <td><%= link_to 'Show', device %></td>
         <td><%= link_to 'Edit', edit_device_path(device) %></td>
         <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>

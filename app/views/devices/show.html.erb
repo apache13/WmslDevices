@@ -13,20 +13,22 @@
 <table>
   <thead>
     <tr>
+      <th>Index</th>
       <th>Staff</th>
-      <th>Status</th>
       <th>Start Date</th>
       <th>End Date</th>
+      <th>Duration</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @device.enrolls.each do |enroll| %>
+    <% @device.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each_with_index do |enroll,index| %>
       <tr>
+      	<td><%= index %></td>
       	<td><%= enroll.staff.name %></td>
-      	<td><%= enroll.status %></td>
       	<td><%= enroll.start_date %></td>
       	<td><%= enroll.end_date %></td>
+      	<td><%= enroll.end_date.nil? ? distance_of_time_in_words_to_now(enroll.start_date):distance_of_time_in_words(enroll.start_date,enroll.end_date)%></td>
       </tr>
     <% end %>
   </tbody>

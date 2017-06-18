@@ -7,7 +7,6 @@
     <tr>
       <th>Staff</th>
       <th>Device</th>
-      <th>Status</th>
       <th>Start Date</th>
       <th>End Date</th>
       <th>Duration</th>
@@ -20,7 +19,6 @@
       <tr>
         <td><%= enroll.staff.display %></td>
         <td><%= enroll.device.display %></td>
-        <td><%= enroll.status %></td>
         <td><%= enroll.start_date %></td>
         <td><%= enroll.end_date %></td>
         <td><%= enroll.end_date.nil? ? distance_of_time_in_words_to_now(enroll.start_date):distance_of_time_in_words(enroll.start_date,enroll.end_date)%></td>
