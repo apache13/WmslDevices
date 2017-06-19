@@ -1,0 +1,2 @@
+module WmsldevicesHelper
+end
