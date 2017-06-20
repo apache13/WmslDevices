@@ -8,7 +8,7 @@ class Enroll < ApplicationRecord
   
   def active?
       enroll = Enroll.find(self.id)     
-      if Date.today.between?(enroll.start_date, enroll.end_date.nil? ? Date.today : enroll.end_date)
+      if Date.today.between?(enroll.start_date, enroll.end_date.nil? ? Date.tomorrow : enroll.end_date+1.day)
         return true
       else
         return false   

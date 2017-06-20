@@ -15,4 +15,13 @@ class Device < ApplicationRecord
     return "#{self.code} (#{self.name})"
   end
   
+  def timeline
+    enrolls = Array.new
+    self.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll|
+      staff = [enroll.staff.display, enroll.start_date, (enroll.end_date.nil? ? Date.tomorrow : enroll.end_date+1.day)]
+      enrolls << staff 
+    end        
+    return enrolls
+  end
+  
 end

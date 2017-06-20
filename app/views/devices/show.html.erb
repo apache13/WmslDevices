@@ -13,7 +13,6 @@
 <table>
   <thead>
     <tr>
-      <th>Index</th>
       <th>Staff</th>
       <th>Start Date</th>
       <th>End Date</th>
@@ -22,9 +21,8 @@
   </thead>
 
   <tbody>
-    <% @device.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each_with_index do |enroll,index| %>
+    <% @device.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
       <tr>
-      	<td><%= index %></td>
       	<td><%= enroll.staff.name %></td>
       	<td><%= enroll.start_date %></td>
       	<td><%= enroll.end_date %></td>
@@ -33,6 +31,10 @@
     <% end %>
   </tbody>
 </table>
+
+<p>
+<%= timeline @device.timeline %>
+</p>
 
 <%= link_to 'Edit', edit_device_path(@device) %> |
 <%= link_to 'Back', devices_path %>

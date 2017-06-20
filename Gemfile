@@ -52,3 +52,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'validates_overlap', '~> 0.8.4'
 
 gem 'validates_timeliness', '~> 4.0', '>= 4.0.2'
+
+gem 'chartkick', '~> 2.2', '>= 2.2.4'
