@@ -7,5 +7,13 @@ class Staff < ApplicationRecord
   def display
     return "#{self.code} (#{self.name})"
   end
-       
+   
+  def timeline
+    enrolls = Array.new
+    self.enrolls.select{|enroll| enroll.active?}.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| 
+      device = [enroll.device.display, enroll.start_date, (enroll.end_date.nil? ? Date.tomorrow : enroll.end_date+1.day)]
+      enrolls << device 
+    end        
+    return enrolls
+  end    
 end
