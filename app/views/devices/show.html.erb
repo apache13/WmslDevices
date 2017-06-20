@@ -28,7 +28,7 @@
       	<td><%= enroll.staff.name %></td>
       	<td><%= enroll.start_date %></td>
       	<td><%= enroll.end_date %></td>
-      	<td><%= enroll.end_date.nil? ? distance_of_time_in_words_to_now(enroll.start_date):distance_of_time_in_words(enroll.start_date,enroll.end_date)%></td>
+      	<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today+1.day):distance_of_time_in_words(enroll.start_date,enroll.end_date+1.day) %></td>
       </tr>
     <% end %>
   </tbody>
