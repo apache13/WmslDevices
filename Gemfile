@@ -61,4 +61,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'active_link_to', '~> 1.0', '>= 1.0.4'
 
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 

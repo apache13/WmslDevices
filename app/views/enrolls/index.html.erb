@@ -2,7 +2,7 @@
 
 <h1>Enrolls</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Staff</th>
@@ -29,7 +29,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @enrolls, :class => 'digg_pagination' %>
 <br>
 
 <%= link_to 'New Enroll', new_enroll_path %>

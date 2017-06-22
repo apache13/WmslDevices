@@ -4,7 +4,8 @@ class EnrollsController < ApplicationController
   # GET /enrolls
   # GET /enrolls.json
   def index
-    @enrolls = Enroll.all
+    #@enrolls = Enroll.all
+    @enrolls = Enroll.paginate(:page => params[:page])
   end
 
   # GET /enrolls/1

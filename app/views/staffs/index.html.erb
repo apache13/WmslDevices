@@ -2,7 +2,7 @@
 
 <h1>Staffs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -27,7 +27,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @staffs, :class => 'digg_pagination' %>
 <br>
 
 <%= link_to 'New Staff', new_staff_path %>
