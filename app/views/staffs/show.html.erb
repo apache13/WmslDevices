@@ -28,7 +28,7 @@
   <tbody>
     <% @staff.enrolls.select{|enroll| enroll.active?}.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
       <tr>
-      	<td><%= enroll.device.name %></td>
+      	<td><%= link_to enroll.device.display , enroll.device %></td>
       	<td><%= enroll.start_date %></td>
       	<td><%= enroll.end_date %></td>
       	<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today+1.day):distance_of_time_in_words(enroll.start_date,enroll.end_date+1.day) %></td>

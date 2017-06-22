@@ -17,8 +17,8 @@
   <tbody>
     <% @enrolls.each do |enroll| %>
       <tr>
-        <td><%= enroll.staff.display %></td>
-        <td><%= enroll.device.display %></td>
+        <td><%= link_to enroll.staff.display , enroll.staff %></td>
+        <td><%= link_to enroll.device.display , enroll.device %></td>
         <td><%= enroll.start_date %></td>
         <td><%= enroll.end_date %></td>
         <td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today+1.day):distance_of_time_in_words(enroll.start_date,enroll.end_date+1.day) %></td>
@@ -32,4 +32,4 @@
 <%= will_paginate @enrolls, :class => 'digg_pagination' %>
 <br>
 
-<%= link_to 'New Enroll', new_enroll_path %>
+<%= link_to 'New Enroll', new_enroll_path , :class => 'btn btn-primary' %>
