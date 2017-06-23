@@ -15,7 +15,7 @@
   <%= @staff.department %>
 </p>
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Device</th>
@@ -38,8 +38,11 @@
 </table>
 
 <p>
-<%= timeline @staff.timeline %>
+  	<strong>Time Line:</strong>
 </p>
+<div>
+	<%= timeline @staff.timeline %>
+</div>
 
 <%= link_to 'Edit', edit_staff_path(@staff) %> |
 <%= link_to 'Back', staffs_path %>
