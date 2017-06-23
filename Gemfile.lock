@@ -50,7 +50,6 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bootstrap_form (2.7.0)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.14.3)
@@ -183,7 +182,6 @@ PLATFORMS
 DEPENDENCIES
   active_link_to (~> 1.0, >= 1.0.4)
   bootstrap-sass (~> 3.3.6)
-  bootstrap_form (~> 2.7)
   byebug
   capybara (~> 2.13)
   chartkick (~> 2.2, >= 2.2.4)
