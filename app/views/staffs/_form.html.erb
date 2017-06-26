@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :staff_name %>
+    <%= form.text_field :name, id: :staff_name, class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :code %>
-    <%= form.text_field :code, id: :staff_code %>
+    <%= form.text_field :code, id: :staff_code, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :department %>
-    <%= form.text_field :department, id: :staff_department %>
+    <%= form.text_field :department, id: :staff_department, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil , :class => 'btn btn-primary' %>
   </div>
 <% end %>

@@ -2,12 +2,22 @@
 
 <p>
   <strong>Staff:</strong>
-  <%= @enroll.staff %>
+  <%= @enroll.staff.display %>
 </p>
 
 <p>
   <strong>Device:</strong>
-  <%= @enroll.device %>
+  <%= @enroll.device.display %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @enroll.start_date.strftime("%F") %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @enroll.end_date.nil? ? nil:@enroll.end_date.strftime("%F") %>
 </p>
 
 <%= link_to 'Edit', edit_enroll_path(@enroll) , :class => 'btn btn-default' %>
