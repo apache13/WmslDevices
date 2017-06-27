@@ -1,8 +1,11 @@
 class Device < ApplicationRecord
   has_many :enrolls ,:dependent => :restrict_with_exception
   has_many :staffs, through: :enrolls
+  
   validates :name, :code, presence: true
-  validates :code, uniqueness: true
+  validates :code, uniqueness: true  
+  validates :name, length: { maximum: 128 }
+  validates :code, length: { maximum: 64 }
   
   def using?
       enrolls.select {|enroll| enroll.active?}.each do |enroll|     

@@ -5,7 +5,8 @@ class DevicesController < ApplicationController
   # GET /devices.json
   def index
     #@devices = Device.all
-    @devices = Device.paginate(:page => params[:page])
+    #@devices = Device.paginate(:page => params[:page])
+    @devices = Device.where("name like ? AND code like ?","%#{params[:name]}%","%#{params[:code]}%").paginate(:page => params[:page])  
   end
 
   # GET /devices/1

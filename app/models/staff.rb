@@ -1,8 +1,11 @@
 class Staff < ApplicationRecord  
   has_many :enrolls , :dependent => :restrict_with_exception
   has_many :devices, through: :enrolls  
+  
   validates :name, :code, presence: true
   validates :code, uniqueness: true
+  validates :name, length: { maximum: 128 }
+  validates :code, length: { maximum: 64 }
   
   def display
     return "#{self.code} (#{self.name})"

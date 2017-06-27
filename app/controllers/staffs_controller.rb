@@ -5,7 +5,8 @@ class StaffsController < ApplicationController
   # GET /staffs.json
   def index
     #@staffs = Staff.all
-    @staffs = Staff.paginate(:page => params[:page])
+    #@staffs = Staff.paginate(:page => params[:page])
+    @staffs = Staff.where("name like ? AND code like ?","%#{params[:name]}%","%#{params[:code]}%").paginate(:page => params[:page])
   end
 
   # GET /staffs/1
