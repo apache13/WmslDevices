@@ -6,7 +6,8 @@ class Enroll < ApplicationRecord
   
   validates :staff,:device,:start_date, presence: true
   validates :start_date, :end_date, :overlap => {:scope => :device_id}         
-  validates :start_date, :timeliness => {:before => :end_date, :before_message => "must be less then end date."}   
+  validates :start_date, :timeliness => {:before => :end_date, :before_message => "must be less then end date."}
+  validates :start_date, :timeliness => {:on_or_before => Date.today.beginning_of_day , :on_or_before_message => "must be less then or equal current date."}   
   
   private
   def ensure_start_time_and_end_time 
