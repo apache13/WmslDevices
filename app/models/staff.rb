@@ -14,7 +14,7 @@ class Staff < ApplicationRecord
   def timeline
     enrolls = Array.new
     self.enrolls.select{|enroll| enroll.active?}.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| 
-      device = [enroll.device.display, enroll.start_date, (enroll.end_date.nil? ? Date.today : enroll.end_date)]
+      device = [enroll.device.display, enroll.start_date, (enroll.end_date.nil? ? Date.today.end_of_day : enroll.end_date)]
       enrolls << device 
     end        
     return enrolls

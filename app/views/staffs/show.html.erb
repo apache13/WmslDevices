@@ -31,7 +31,7 @@
       	<td><%= link_to enroll.device.display , enroll.device %></td>
       	<td><%= enroll.start_date.strftime("%F") %></td>
       	<td><%= enroll.end_date.nil? ? nil:enroll.end_date.strftime("%F") %></td>
-      	<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
+      	<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today.end_of_day):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
       </tr>
     <% end %>
   </tbody>
