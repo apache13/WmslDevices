@@ -6,7 +6,19 @@ class DevicesController < ApplicationController
   def index
     #@devices = Device.all
     #@devices = Device.paginate(:page => params[:page])
-    @devices = Device.where("name like ? AND code like ?","%#{params[:name]}%","%#{params[:code]}%").paginate(:page => params[:page])  
+    if params[:name].present? && params[:code].present?
+        @devices = Device.where("name like ?","%#{params[:name]}%").where("code like ?","%#{params[:code]}%").paginate(:page => params[:page])
+    else
+      if params[:name].present?
+        @devices = Device.where("name like ?","%#{params[:name]}%").paginate(:page => params[:page])
+      else
+        if params[:code].present?
+          @devices = Device.where("code like ?","%#{params[:code]}%").paginate(:page => params[:page])
+        else
+          @devices = Device.paginate(:page => params[:page])
+        end 
+      end
+    end
   end
 
   # GET /devices/1

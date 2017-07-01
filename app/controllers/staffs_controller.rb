@@ -6,7 +6,19 @@ class StaffsController < ApplicationController
   def index
     #@staffs = Staff.all
     #@staffs = Staff.paginate(:page => params[:page])
-    @staffs = Staff.where("name like ? AND code like ?","%#{params[:name]}%","%#{params[:code]}%").paginate(:page => params[:page])
+    if params[:name].present? && params[:code].present?
+        @staffs = Staff.where("name like ?","%#{params[:name]}%").where("code like ?","%#{params[:code]}%").paginate(:page => params[:page])
+    else
+      if params[:name].present?
+        @staffs = Staff.where("name like ?","%#{params[:name]}%").paginate(:page => params[:page])
+      else
+        if params[:code].present?
+          @staffs = Staff.where("code like ?","%#{params[:code]}%").paginate(:page => params[:page])
+        else
+          @staffs = Staff.paginate(:page => params[:page])
+        end 
+      end
+    end
   end
 
   # GET /staffs/1

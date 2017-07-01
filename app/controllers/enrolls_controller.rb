@@ -5,7 +5,20 @@ class EnrollsController < ApplicationController
   # GET /enrolls.json
   def index
     #@enrolls = Enroll.all
-    @enrolls = Enroll.paginate(:page => params[:page])
+    #@enrolls = Enroll.paginate(:page => params[:page])
+    if params[:staff_id].present? && params[:device_id].present?
+      @enrolls = Enroll.where("staff_id = ?", "#{params[:staff_id]}").where("device_id = ?", "#{params[:device_id]}").paginate(:page => params[:page])
+    else
+      if params[:staff_id].present?
+        @enrolls = Enroll.where("staff_id = ?", "#{params[:staff_id]}").paginate(:page => params[:page])
+      else
+        if params[:device_id].present?
+          @enrolls = Enroll.where("device_id = ?", "#{params[:device_id]}").paginate(:page => params[:page])
+        else
+          @enrolls = Enroll.paginate(:page => params[:page])
+        end          
+      end        
+    end    
   end
 
   # GET /enrolls/1
