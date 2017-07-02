@@ -28,7 +28,7 @@
   
   <div class="form-group">
     <%= form.label :end_date %>
-    <%= form.date_select :end_date, id: :enroll_end_date, include_blank: true %>
+    <%= form.date_select :end_date, id: :enroll_end_date,include_blank: true, start_year: Date.today.year-10, end_year: Date.today.year+1 %>
   </div>
   
   <div class="actions">  	

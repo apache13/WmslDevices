@@ -1,41 +1,57 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @device.name %>
+<p id="notice">
+	<%= notice %>
 </p>
+<div class="row">
+	<div class="col-md-6">
+		<p>
+			<strong>Name:</strong>
+			<%= @device.name %>
+		</p>
+		<p>
+			<strong>Code:</strong>
+			<%= @device.code %>
+		</p>
+	</div>
+	<div class="col-md-6">		
+		<p>
+			<strong>QR Code:</strong>
+			<%= raw @qr.as_html %>
+			<%= device_url(@device) %>
+		</p>
+	</div>
+</div>
 
-<p>
-  <strong>Code:</strong>
-  <%= @device.code %>
-</p>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Staff</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Duration</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @device.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
-      <tr>
-      	<td><%= link_to enroll.staff.display , enroll.staff %></td>
-      	<td><%= enroll.start_date.strftime("%F") %></td>
-      	<td><%= enroll.end_date.nil? ? nil:enroll.end_date.strftime("%F") %></td>
-      	<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today.end_of_day):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p>
-  <strong>Time Line:</strong>
-</p>
 <div>
+	<p>
+		<strong>History:</strong>
+	</p>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Staff</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Duration</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @device.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
+			<tr>
+				<td><%= link_to enroll.staff.display , enroll.staff %></td>
+				<td><%= enroll.start_date.strftime("%F") %></td>
+				<td><%= enroll.end_date.nil? ? nil:enroll.end_date.strftime("%F") %></td>
+				<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today.end_of_day):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	<p>
+		<strong>Time Line:</strong>
+	</p>
 	<%= timeline @device.timeline %>
 </div>
 
