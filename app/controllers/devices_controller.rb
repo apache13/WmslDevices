@@ -24,7 +24,7 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def show
-    @qr = RQRCode::QRCode.new( device_url(@device) , :size => 4, :level => :h )
+    @qr = RQRCode::QRCode.new( device_url(@device) , :size => 5, :level => :h )
   end
 
   # GET /devices/new
