@@ -20,11 +20,21 @@ class DevicesController < ApplicationController
       end
     end
   end
-
+ 
   # GET /devices/1
   # GET /devices/1.json
   def show
-    @qr = RQRCode::QRCode.new( device_url(@device) , :size => 5, :level => :h )
+    @qr = RQRCode::QRCode.new( device_url(@device) , :size => 5, :level => :h )    
+    respond_to do |format|
+      format.html {@qr}
+      format.json {@qr}
+      format.svg do
+        svg = @qr.as_svg(offset: 0, color: '000', 
+              shape_rendering: 'crispEdges', 
+              module_size: 11)
+        render inline: svg
+      end
+    end       
   end
 
   # GET /devices/new

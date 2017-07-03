@@ -15,7 +15,9 @@
 	<div class="col-md-6">
 		<p>
 			<strong>QR Code:</strong>
-			<%= raw @qr.as_html %>
+		</p>	
+		<%=  image_tag "#{device_url(@device)}.svg", size: "250" %>		
+		<p>
 			<%= device_url(@device) %>
 		</p>
 	</div>
