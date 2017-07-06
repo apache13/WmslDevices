@@ -1,6 +1,6 @@
 <%= form_with(model: enroll, local: true) do |form| %>
   <% if enroll.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2><%= pluralize(enroll.errors.count, "error") %> prohibited this enroll from being saved:</h2>
 
       <ul>

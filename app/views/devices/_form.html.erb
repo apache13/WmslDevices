@@ -1,6 +1,6 @@
 <%= form_with(model: device, local: true) do |form| %>
   <% if device.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2><%= pluralize(device.errors.count, "error") %> prohibited this device from being saved:</h2>
 
       <ul>

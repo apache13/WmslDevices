@@ -1,6 +1,6 @@
 <%= form_with(model: staff, local: true) do |form| %>
   <% if staff.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2><%= pluralize(staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
 
       <ul>
