@@ -1,88 +1,73 @@
 <p id="notice">
 	<%= notice %>
 </p>
-<div class="row">
-	<div class="col-md-8">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<p>
-					<strong>Device</strong>
-				</p>
-			</div>
-			<div class="panel-body">
-				<p>
-					<strong>Name:</strong>
-					<%= @device.name %>
-				</p>
-				<p>
-					<strong>Code:</strong>
-					<%= @device.code %>
-				</p>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<p>
-					<strong>QR Code</strong>
-				</p>
-			</div>
-			<div class="panel-body">
-				<%= image_tag "#{device_url(@device)}.svg", size: "200", class: "img-thumbnail center-block"%>
-				<p class="small text-center">
-					<%= device_url(@device) %>
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
 
 <div class="row">
 	<div class="col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<p>
-					<strong>History</strong>
-				</p>
-			</div>
-			<div class="panel-body">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>Staff</th>
-							<th>Start Date</th>
-							<th>End Date</th>
-							<th>Duration</th>
-						</tr>
-					</thead>
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active">
+				<a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">Detail</a>
+			</li>
+			<li role="presentation">
+				<a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a>
+			</li>			
+		</ul>
 
-					<tbody>
-						<% @device.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
-						<tr>
-							<td><%= link_to enroll.staff.display , enroll.staff %></td>
-							<td><%= enroll.start_date.strftime("%F") %></td>
-							<td><%= enroll.end_date.nil? ? nil:enroll.end_date.strftime("%F") %></td>
-							<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today.end_of_day):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active" id="detail">
+				<br />
+				<div class="row">
+					<div class="col-md-10">
+						<p>
+							<strong>Name:</strong>
+							<%= @device.name %>
+						</p>
+						<p>
+							<strong>Code:</strong>
+							<%= @device.code %>
+						</p>
+					</div>
+					<div class="col-md-2">
+						<%= image_tag "#{device_url(@device)}.svg", size: "200", class: "img-thumbnail pull-right"%>						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<p>
+							<%= timeline @device.timeline %>
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-</div>
+			<div role="tabpanel" class="tab-pane fade" id="history">
+				<br />
+				<div class="row">
+					<div class="col-md-12">
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<p>
-					<strong>Time Line</strong>
-				</p>
-			</div>
-			<div class="panel-body">
-				<%= timeline @device.timeline %>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Staff</th>
+									<th>Start Date</th>
+									<th>End Date</th>
+									<th>Duration</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @device.enrolls.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
+								<tr>
+									<td><%= link_to enroll.staff.display , enroll.staff %></td>
+									<td><%= enroll.start_date.strftime("%F") %></td>
+									<td><%= enroll.end_date.nil? ? nil:enroll.end_date.strftime("%F") %></td>
+									<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today.end_of_day):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
