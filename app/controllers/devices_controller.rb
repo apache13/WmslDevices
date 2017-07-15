@@ -31,7 +31,7 @@ class DevicesController < ApplicationController
       format.svg do
         svg = @qr.as_svg(offset: 0, color: '000', 
               shape_rendering: 'crispEdges', 
-              module_size: 11)
+              module_size: 3)
         render inline: svg
       end
     end       
