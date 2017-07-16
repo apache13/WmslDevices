@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tag/print'
+
   get 'overview/index'
   resources :enrolls
   resources :staffs
