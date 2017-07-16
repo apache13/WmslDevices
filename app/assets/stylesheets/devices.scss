@@ -1,3 +1,23 @@
 // Place all the styles related to the Devices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tag div p {
+  margin: 0 0 0px;
+}
+
+@media print {
+  @page {                
+    size: A4;
+    margin: 0mm;
+  }
+  html, body {
+    width: 1024px;
+  }
+  body {
+    margin: 0 auto;
+  }
+  .tag div p {
+    margin: 0 0 0px;
+  }
+}

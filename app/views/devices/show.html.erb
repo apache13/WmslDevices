@@ -5,12 +5,15 @@
 <div class="row">
 	<div class="col-md-12">
 		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
+		<ul class="nav nav-tabs hidden-print" role="tablist">
 			<li role="presentation" class="active">
 				<a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">Detail</a>
 			</li>
 			<li role="presentation">
 				<a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a>
+			</li>
+			<li role="presentation">
+				<a href="#tag" aria-controls="tag" role="tab" data-toggle="tab">Tag</a>
 			</li>
 		</ul>
 
@@ -19,7 +22,7 @@
 			<div role="tabpanel" class="tab-pane fade in active" id="detail">
 				<br />
 				<div class="row">
-					<div class="col-md-10">
+					<div class="col-md-12">
 						<p>
 							<strong>Name:</strong>
 							<%= @device.name %>
@@ -28,22 +31,7 @@
 							<strong>Code:</strong>
 							<%= @device.code %>
 						</p>
-					</div>
-					<div class="col-md-2">
-						<div class="row">
-							<div class="col-md-12">
-								<%= image_tag "#{device_url(@device)}.svg", size: "200", class: "img-thumbnail pull-right"%>
-							</div>
-						</div>
-						</br>
-						<div class="row">
-							<div class="col-md-12">
-								<p class="text-center">
-									<%= link_to 'Download', "#{device_url(@device)}.svg" , :class => 'btn btn-default', :target => "_blank", :format => "svg" %>
-								</p>
-							</div>
-						</div>
-					</div>
+					</div>					
 				</div>
 				<div class="row">
 					<div class="col-md-12">
@@ -81,9 +69,36 @@
 					</div>
 				</div>
 			</div>
+			<div role="tabpanel" class="tab-pane fade" id="tag">
+				<br />
+				<div class="row">
+					<div class="tag col-xs-4">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-xs-3">
+										<%= image_tag "#{device_url(@device)}.svg", size: "150", class: "img-thumbnail"%>
+									</div>
+									<div class="col-xs-9">
+										<p>
+											<strong><small><%= @device.code %></small></strong>
+										</p>
+										<p>
+											<small><%= @device.name %></small>
+										</p>
+										<p>
+											<small><%= "#{device_url(@device)}" %></small>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-<%= link_to 'Edit', edit_device_path(@device) , :class => 'btn btn-default' %>
-<%= link_to 'Back', devices_path , :class => 'btn btn-default'%>
+<%= link_to 'Edit', edit_device_path(@device) , :class => 'btn btn-default hidden-print' %>
+<%= link_to 'Back', devices_path , :class => 'btn btn-default hidden-print'%>
