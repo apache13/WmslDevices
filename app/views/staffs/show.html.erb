@@ -1,48 +1,101 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @staff.name %>
+<p id="notice">
+	<%= notice %>
 </p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @staff.code %>
-</p>
+<div class="row">
+	<div class="col-md-12">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs hidden-print" role="tablist">
+			<li role="presentation" class="active">
+				<a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">Detail</a>
+			</li>
+			<li role="presentation">
+				<a href="#enrolls" aria-controls="enrolls" role="tab" data-toggle="tab">Enrolls</a>
+			</li>
+			<li role="presentation">
+				<a href="#tag" aria-controls="tag" role="tab" data-toggle="tab">Tag</a>
+			</li>
+		</ul>
 
-<p>
-  <strong>Department:</strong>
-  <%= @staff.department %>
-</p>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active" id="detail">
+				<br />
+				<div class="row">
+					<div class="col-md-12">
+						<p>
+							<strong>Name:</strong>
+							<%= @staff.name %>
+						</p>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Device</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Duration</th>
-    </tr>
-  </thead>
+						<p>
+							<strong>Code:</strong>
+							<%= @staff.code %>
+						</p>
 
-  <tbody>
-    <% @staff.enrolls.select{|enroll| enroll.active?}.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
-      <tr>
-      	<td><%= link_to enroll.device.display , enroll.device %></td>
-      	<td><%= enroll.start_date.strftime("%F") %></td>
-      	<td><%= enroll.end_date.nil? ? nil:enroll.end_date.strftime("%F") %></td>
-      	<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today.end_of_day):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+						<p>
+							<strong>Department:</strong>
+							<%= @staff.department %>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="enrolls">
+				<br />
+				<div class="row">
+					<div class="col-md-12">
 
-<p>
-  	<strong>Time Line:</strong>
-</p>
-<div>
-	<%= timeline @staff.timeline, height: "200px" %>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Device</th>
+									<th>Start Date</th>
+									<th>End Date</th>
+									<th>Duration</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<% @staff.enrolls.select{|enroll| enroll.active?}.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>
+								<tr>
+									<td><%= link_to enroll.device.display , enroll.device %></td>
+									<td><%= enroll.start_date.strftime("%F") %></td>
+									<td><%= enroll.end_date.nil? ? nil:enroll.end_date.strftime("%F") %></td>
+									<td><%= enroll.end_date.nil? ? distance_of_time_in_words(enroll.start_date,Date.today.end_of_day):distance_of_time_in_words(enroll.start_date,enroll.end_date) %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="tag">
+				<br />
+				<div class="row">
+					<div class="col-md-12">
+						<p>
+							<strong>Name:</strong>
+							<%= @staff.name %>
+						</p>
+
+						<p>
+							<strong>Code:</strong>
+							<%= @staff.code %>
+						</p>
+
+						<p>
+							<strong>Department:</strong>
+							<%= @staff.department %>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<%= render 'tags', staff: @staff %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<%= link_to 'Edit', edit_staff_path(@staff) , :class => 'btn btn-default' %> 
-<%= link_to 'Back', staffs_path , :class => 'btn btn-default' %>
+<%= link_to 'Edit', edit_staff_path(@staff) , :class => 'btn btn-default hidden-print' %>
+<%= link_to 'Back', staffs_path , :class => 'btn btn-default hidden-print' %>

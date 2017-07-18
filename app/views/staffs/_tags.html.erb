@@ -1,0 +1,24 @@
+<% @staff.enrolls.select{|enroll| enroll.active?}.sort {|x,y| x.start_date <=> y.start_date}.each do |enroll| %>														
+<div class="col-xs-4 tag">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-4 tag-qrcode">
+					<%= image_tag "#{device_url(enroll.device)}.svg", size: "100", class: "img-thumbnail"%>
+				</div>
+				<div class="col-xs-8 tag-info">
+					<p>
+						<small><%= enroll.device.code %></small>
+					</p>
+					<p>
+						<small><%= enroll.device.name %></small>
+					</p>
+					<p>
+						<small><%= "#{device_url(enroll.device)}" %></small>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>

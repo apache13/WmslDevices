@@ -72,28 +72,7 @@
 			<div role="tabpanel" class="tab-pane fade" id="tag">
 				<br />
 				<div class="row">
-					<div class="tag col-xs-4">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-xs-3">
-										<%= image_tag "#{device_url(@device)}.svg", size: "150", class: "img-thumbnail"%>
-									</div>
-									<div class="col-xs-9">
-										<p>
-											<strong><small><%= @device.code %></small></strong>
-										</p>
-										<p>
-											<small><%= @device.name %></small>
-										</p>
-										<p>
-											<small><%= "#{device_url(@device)}" %></small>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<%= render 'tag', device: @device %>
 				</div>
 			</div>
 		</div>

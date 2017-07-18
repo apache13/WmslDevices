@@ -1,0 +1,22 @@
+<div class="col-xs-4 tag">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-4 tag-qrcode">
+					<%= image_tag "#{device_url(@device)}.svg", size: "100", class: "img-thumbnail"%>
+				</div>
+				<div class="col-xs-8 tag-info">
+					<p>
+						<small><%= @device.code %></small>
+					</p>
+					<p>
+						<small><%= @device.name %></small>
+					</p>
+					<p>
+						<small><%= "#{device_url(@device)}" %></small>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
